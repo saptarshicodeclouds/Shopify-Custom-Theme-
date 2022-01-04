@@ -1,0 +1,68 @@
+{% render "page-header", title: 'Cart' %}
+
+{% if cart.item_count > 0 %}
+  <section class="cart-area section">
+    <div class="cart shopping">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-2">
+            <div class="block">
+              <div class="product-list">
+                <form method="post">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Item Name</th>
+                        <th class="text-center">Quantity</th>
+                        <th>Item Price</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      {% for item in cart.items %}
+                        <tr>
+                          <td>
+                            <div class="product-info">
+                              <img width="80" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                              <a href="{{ item.url }}">{{ item.product.title }}</a>
+                              {{ item.variant.title }}
+                            </div>
+                          </td>
+                          <td>
+                            <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="1" class="btn btn-default" pattern="[0-9]*">
+                          </td>
+                          <td>{{ item.price | money }}</td>
+                          <td>
+                            <a class="product-remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">Remove</a>
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
+                  
+                  <div class="row justify-content-end cart-total">
+                    <div class="col-md-2">
+                      Total
+                    </div>
+                    <div class="col-md-2">
+                      {{ cart.total_price | money }}
+                    </div>
+                  </div>
+
+                  <input type="submit" name="checkout" value="Checkout" id="checkout-btn" class="btn btn-main pull-right">
+                  <input type="submit" name="update" value="Update" id="update-btn" class="btn btn-transparent pull-right">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% else %}
+  <div class="text-center">
+    <h1 class="text-center mt-4"><img src="https://cdn.shopify.com/s/files/1/0612/6950/8309/files/empty-cart-2685174-2232751.png?v=1641225605" width="80" height="80">Your Cart is empty</h1>
+  </div>
+{% endif %}

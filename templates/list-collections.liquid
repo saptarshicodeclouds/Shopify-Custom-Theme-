@@ -1,0 +1,55 @@
+{% render "page-header", title: 'SHOP' %}
+
+
+{% comment %} All Products {% endcomment %}
+<section class="products section bg-gray">
+    <div class="container">
+        <div class="row">
+
+          {% for collection in collections %}
+            {% comment %} <a href="{{ collection.url }}">More {{ collection.title }} &rsaquo;</a> {% endcomment %}
+            
+            <div class="break"></div>
+
+            <div class="row">
+                {% for product in collection.products %}
+                    <div class="col-md-4">
+                        <div class="product-item">
+                            <div class="product-thumb">
+                                {% comment %} <span class="bage">Sale</span> {% endcomment %}
+                                {% unless product.available %}<span class="bage">Sold out</span>{% endunless %}
+                                
+                                <img class="img-responsive" src="{{ product.featured_image.src | img_url: '1920x' }}" alt="{{ product.featured_image.alt | escape }}">
+                                <div class="preview-meta">
+                                    <ul>
+                                        <li>
+                                            <a href="{{ product.url | within: collection }}"><i class="fa fa-search"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ product.url | within: collection }}><i class="fa fa-heart-o"></i></a>
+                                        </li>
+                                        <li>
+                                            <form id="form-{{ product.handle }}" method="POST" action="/cart/add">
+                                                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                                                <a onclick="document.getElementById('form-{{ product.handle }}').submit()">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h4><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h4>
+                                <p class="price">{{ product.price | money }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                {% endfor %}
+            </div>
+
+          {% endfor %}
+        </div>
+    </div>
+</section>

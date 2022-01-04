@@ -1,0 +1,105 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Themekit template theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https://github.com/Shopify/themekit",
+    "theme_support_url": "https://github.com/Shopify/themekit/issues"
+  },
+  {
+    "name" : "About Image",
+    "settings" : [
+      {
+        "type": "image_picker",
+        "id": "about_img",
+        "label": "About Page Image"
+      }
+    ]
+  },
+  {
+    "name" : "Contact Page",
+    "settings" : [
+      {
+        "type": "text",
+        "id": "contact_address",
+        "label": "Address"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "Phone Number"
+      },
+      {
+        "type": "text",
+        "id": "contact_fax",
+        "label": "Fax"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Email Address"
+      }
+    ]
+  },
+  {
+    "name" : "Footer Menu",
+    "settings" : [
+        {
+            "type": "link_list",
+            "id": "footer_menu",
+            "label": "Footer Menu"
+        }
+    ]
+  },
+  {
+    "name" : "Social Media Links",
+    "settings" : [
+        {
+            "type": "text",
+            "id": "facebook",
+            "label": "Facebook URL"
+        },
+        {
+            "type": "text",
+            "id": "instagram",
+            "label": "Instagram URL"
+        },
+        {
+            "type": "text",
+            "id": "twitter",
+            "label": "Twitter URL"
+        },
+        {
+            "type": "text",
+            "id": "pinterest",
+            "label": "Pinterest URL"
+        }
+    ]
+  },
+  {
+    "name" : "Copyright Text",
+    "settings" : [
+        {
+            "type": "text",
+            "id": "copyright_text",
+            "label": "Copyright text"
+        }
+    ]
+  },
+  {
+    "name" : "Header Settings",
+    "settings" : [
+        {
+          "type": "text",
+          "id": "phone_number",
+          "label": "Phone Number"
+        },
+        {
+          "type": "image_picker",
+          "id": "main_logo",
+          "label": "Logo"
+        }
+    ]
+  }
+]

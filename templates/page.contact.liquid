@@ -1,0 +1,89 @@
+{% render "page-header", title: page.title %}
+
+<section class="contact section">
+  <div class="container">
+    <div class="row">
+      <div class="contact-form col-md-6 ">
+
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              Thank you for your contact
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %}
+          {{ form.errors | default_errors }}          
+
+          <div class="form-group">
+            <label for="ContactFormName">Name</label>
+            <input type="text" id="ContactFormName" name="contact[name]" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="ContactFormEmail">Email</label>
+            <input type="email" id="ContactFormEmail" name="contact[email]" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="ContactFormPhone">Phone</label>
+            <input type="tel" id="ContactFormPhone" name="contact[phone]" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="ContactFormMessage">Message</label>
+            <textarea rows="6" id="ContactFormMessage" class="form-control" name="contact[body]"></textarea>
+          </div>
+          
+          <input type="submit" id="contact-submit" class="btn btn-transparent" value="send">
+        {% endform %}
+        
+      </div>
+
+      <div class="contact-details col-md-6 ">
+        <ul class="contact-short-info list-unstyled">
+
+          {% if settings.contact_address != blank %}
+            <li>
+              <i class="fa fa-home"></i>
+              <span>{{ settings.contact_address }}</span>
+            </li>
+          {% endif %}
+
+          {% if settings.contact_phone != blank %}
+            <li>
+              <i class="fa fa-mobile"></i>
+              <span>Phone: {{ settings.contact_phone }}</span>
+            </li>
+          {% endif %}
+
+          {% if settings.contact_fax != blank %}
+            <li>
+              <i class="fa fa-fax"></i>
+              <span>Fax: {{ settings.contact_fax }}</span>
+            </li>
+          {% endif %}
+
+          {% if settings.contact_email != blank %}
+            <li>
+              <i class="fa fa-envelope-o"></i>
+              <span>Email: {{ settings.contact_email }}</span>
+            </li>
+          {% endif %}
+
+        </ul>
+
+        <div class="social-icon">
+          <ul>
+            <li><a class="fb-icon" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

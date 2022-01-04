@@ -1,0 +1,77 @@
+<section class="top-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-4">
+          <div class="contact-number">
+            <i class="fa fa-phone"></i>
+            <span>
+              {% if settings.phone_number != blank %}
+                {{ settings.phone_number }}
+              {% endif %}
+            </span>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-4">
+          <!-- Site Logo -->
+          <div class="logo text-center">
+            <a href="/">
+
+              <!-- replace logo here -->
+              <img width="200" height="80" class="img-responsive" src="{{ settings.main_logo.src | img_url: '1920x' }}"
+                alt="{{ settings.main_logo.alt | escape }}">
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-md-4 col-xs-12 col-sm-4">
+          <ul class="top-menu list-inline float-right">
+
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <li class="list-inline-item"><a href="/account"><i class="fa fa-sign-in"></i>Account</a></li>
+                <li class="list-inline-item"><i class="fa fa-sign-out"></i>{{ 'log out'  | customer_logout_link }}</li>
+              {% else %}
+                <li class="list-inline-item">
+                  <a href="/account/login">
+                    <i class="fa fa-sign-in"></i>{{ 'log in ' | customer_login_link }}
+                  </a>
+                </li>
+
+                <li class="list-inline-item">
+                  <a href="/account/register">
+                    <i class="fa fa-user"></i>{{ 'register' | customer_register_link }}
+                  </a>
+                </li>
+              {% endif %}
+            {% endif %}
+
+            <li class="list-inline-item">
+              <a href="/cart">
+                <i data-feather="shopping-cart"></i>
+                <span class='badge badge-warning' id='lblCartCount'>{{ cart.item_count }}</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% render "menu" %}
+
+
+  {% schema %}
+    {
+      "name": "Main Menu",
+      "settings":[
+        {
+          "type": "link_list",
+          "id": "main_linklist",
+          "label": "Menu",
+          "default": "main-menu"
+        }
+      ]
+    }
+  {% endschema %}
