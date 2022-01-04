@@ -7,3 +7,5 @@ Tutorial - [Youtube Playlist](https://www.youtube.com/playlist?list=PLY75B7J77ly
 ### Todo
 
 - [ ] Ajax Cart Update
+- [ ] User Authentication Page
+- [ ] Customer Account Page
